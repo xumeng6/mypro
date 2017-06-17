@@ -18,3 +18,5 @@ int main()
 	cout<<sizeof(c)<<endl;
 	return 0;
 }
+//ending
+//this is a ending!
