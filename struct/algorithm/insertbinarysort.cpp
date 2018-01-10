@@ -1,0 +1,58 @@
+#include<iostream>
+#include<vector>
+#include<ctime>
+#include<cstdlib>
+using namespace::std;
+void strinsort(vector<int>&a)
+{
+	for(int i=1;i<a.size();++i)
+	{
+		if(a[i]<a[i-1])
+		{
+			int tmp=a[i];
+			int low=0,high=i-1,mid;
+			while(low<=high)
+			{
+				mid=(low+high)/2;
+				if(tmp<a[mid])
+				{
+					high=mid-1;
+				}
+				else
+				{
+					low=mid+1;
+				}
+			}
+			for(int j=i-1;j>=mid;j--)
+			{
+				a[j+1]=a[j];
+			}
+			a[low]=tmp;
+		}
+	}
+}
+int random(int begin,int end)
+{
+	return(begin+rand()%end);
+}
+int main()
+{
+	vector<int> a;
+	srand( time(0));
+	for(int i =0;i<random(10,20);++i)
+	{
+		a.push_back(random(0,100));
+	}
+	for(vector<int>::iterator it=a.begin();it!=a.end();++it)
+	{
+		cout<<*it<<'-';
+	}
+	cout<<endl;
+	strinsort(a);
+	for(vector<int>::iterator it=a.begin();it!=a.end();++it)
+	{	
+		cout<<*it<<'-';
+	}
+	cout<<endl;
+	return 0;
+}
